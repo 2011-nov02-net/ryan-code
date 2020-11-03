@@ -1,9 +1,33 @@
 .NET - managed code
     - code runs in special runtime environment that auto handles low level stuff + crossplatform/os
     - interoperablility - c# and f# can run together etc.
+    - everything is an object
+        - possible exception of null
+            - null default value for reference type vars
     
 Version Control
     - VCS : Version Control System
         - Centralized : SVN - Subversion
         - Distributed : Git
     - SCM : Source Control Management
+
+Console Application:
+    - runetime looks for a static method Main
+    - class: a blueprint for creating objects
+    - method: sequence of statements that have inputs(args) and outputs(returns)
+    - variable: slot to contain a value
+        - data types
+            - Numerical
+                - long : 8 bytes
+                - *int : 4 bytes
+                - short : 2 bytes
+                - byte : 1 byte
+            - fractional : doesnt have inf precision
+                - *double : 8 bytes
+                - float : 4 bytes
+                - decimal : 16 bytes(best precision)
+            - conditional
+                - bool : true/false
+            - strings : are unicode
+                - char : one character
+                - string : any num of chars
