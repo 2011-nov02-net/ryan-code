@@ -1,0 +1,9 @@
+.NET - managed code
+    - code runs in special runtime environment that auto handles low level stuff + crossplatform/os
+    - interoperablility - c# and f# can run together etc.
+    
+Version Control
+    - VCS : Version Control System
+        - Centralized : SVN - Subversion
+        - Distributed : Git
+    - SCM : Source Control Management
