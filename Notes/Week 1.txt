@@ -1,18 +1,54 @@
 .NET - managed code
     - code runs in special runtime environment that auto handles low level stuff + crossplatform/os
-    - interoperablility - c# and f# can run together etc.
+    - inter-operablility - c# and f# can run together etc.
+    - has automatic memory management
     - everything is an object
         - possible exception of null
             - null default value for reference type vars
-    
+    - .NET Standard
+        - shared libraries between .NET Core and .NET Framework and mono
+        - makes code resusable in any implementation
+            - for library projects not exes
+    Implementations:
+        - .NET Framework
+            - last version 4.8
+            - Older windows only, getting replaced by .NET Core
+        - .NET Core
+            - new redesigned and crossplatform
+            - gonna be new and sole .NET 
+        - Mono
+            - older crossplatform .NET
+            - uses its own mono runtime
+            - used for mobile dev / unity for games
+            - uses Ahead of time(AOT) compiling
+
+
+.Net Core Code Execution / Common Language Infrastructure(CLI) : source > build > run
+    - Common Language Infrastructure(CLI) : the whole proccess from source to run
+    - source code
+        - project files
+            - cs files and csproj files
+    - dotnet build: compiles source into assembly
+        - 1 project to 1 assembly
+            - c# compiler turns source into dlls/assemblies
+                - c# compiler calls MSBuild > Roslyn
+        - assemblies become common intermediate language(CIL, MSIL, IL) instead of c# - still crossplatform
+    - dotnet run / Virtual Execution System(VES) : compiles and runs assemblies
+        - Virtual Execution System(VES) : virtual environment for assemblies to run so crossplatform
+        - Just in Time(JIT) compiler compiles the assemblies into native instrcutions for CPU to run
+        - Common Language Runtime(CLR) virtual machine component allows assemblies to be ran crossplatform
+            - has standard .NET libraries - Base Class Library(BCL)
+            - handles memory management (garbage collection)
+            - handles exceptions, threads, data types
+
 Version Control
     - VCS : Version Control System
         - Centralized : SVN - Subversion
         - Distributed : Git
     - SCM : Source Control Management
 
-Console Application:
-    - runetime looks for a static method Main
+C# / Console Application:
+    - runtime looks for a static method Main
     - class: a blueprint for creating objects
     - method: sequence of statements that have inputs(args) and outputs(returns)
     - variable: slot to contain a value
