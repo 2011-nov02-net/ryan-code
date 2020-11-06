@@ -38,7 +38,46 @@ OOP:
         - constructors can inherit from parent class constructors
             - ex "public person() : base(height)" - inherits height from a parent class constructor
             - parent class must have blank constructor and constructor with value to inherit
+    - Abstraction: expose only functionality to caller
+        - seperation between functionality and implementation
+        - generalizing commons into classes/interfaces/abstract classes etc
+    - Polymorphism: ability to substitute different implementations
+        - Delegates to inject custom behavior into methods
+        - Generics to allow for many different types to be used
+        - implement same interface different ways
+            - method overloading
+                - multiple functions with same name but diff args/type - Compile time Polymorphism
+            - override virtual methods
+                - change inherited function but same name/args - Run time Polymorphism
+    - Encapsulation: group of related data and behavior treated as a single unit or object
+        - object would control access to its data
 
+SOLID: Single-Responsibility, Open-Closed, Liskov-Substitution, Interface-Segregation, Dependency-Inversion
+    - Single-Responsibility Principle
+        - a class should only have 1 Responsibility
+        - methods should be short and simple
+    - Open/Closed Principle
+        - Software should be open for extension but closed for modification
+            - open : not sealed and allow Polymorphism  - closed : stable and not changing behavior or members
+    - Liskov-Substitution Principle
+        - if anywhere you accept parameter type x, then it should also work if you pass derived type x
+    - Interface-Segregation Principle
+        - many specific interfaces better than one big general purpose interface
+    - Dependency-Inversion
+        - should depend on abstractions not conctetions
+            - have classes depend on interfaces instead of other classes
+
+Testing:
+    - Types : All manual or automated:
+        - Unit Testing : Testing a single component/ smallest unit
+        - Integration Testing : Testing multiple components together
+        - System Testing : test the whole thing together
+        - User-Acceptance Testing : evaluate from user pov
+        - Function Testing : does app fulfill some function
+    - Test Driven Development : 
+        - Scaffold classes with skeleton code (just enough to compile)
+        - write thorough unit tests for some of the code
+        - write just enough code to make test pass
 
 .Net Core Code Execution / Common Language Infrastructure(CLI) : source > build > run
     - Common Language Infrastructure(CLI) : the whole proccess from source to run
@@ -75,6 +114,11 @@ C# / Console Application:
     - class: a blueprint for creating objects
         - always has a parent class(" : object" by default)
     - method: sequence of statements that have inputs(args) and outputs(returns)
+    - extension method: creating a static class with helper methods
+        - add methods onto already existing objects
+            - add this in from on paramters
+                - ex (public static int WordCount(this String str))
+                    - so now all string objects have wordcount method (string.WordCount())
     - variable: slot to contain a value
         - data types
             - Numerical
