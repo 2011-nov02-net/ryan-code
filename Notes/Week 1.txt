@@ -2,6 +2,8 @@
     - code runs in special runtime environment that auto handles low level stuff + crossplatform/os
     - inter-operablility - c# and f# can run together etc.
     - has automatic memory management
+        - generazinal and tracing garbage collection
+            - auto checking of references to free memory
     - everything is an object
         - possible exception of null
             - null default value for reference type vars
@@ -21,6 +23,21 @@
             - uses its own mono runtime
             - used for mobile dev / unity for games
             - uses Ahead of time(AOT) compiling
+OOP:
+    - Inheritance: share code that several classes need
+        - types:
+            - direct Inheritance(is-a)
+            - abstract base class (is-a)
+            - composition/delegation (has-a)
+                - Put shared code in class and create instance of class when needed to use shared code
+                - use interfaces, follow dependency inversion principle
+        - C# doesnt support multiple Inheritance
+            - only 1 class, but can be multiple interfaces
+        - Liskov Substitution Principle:
+            - if anywhere you accept parameter type x, then it should also work if you pass derived type x
+        - constructors can inherit from parent class constructors
+            - ex "public person() : base(height)" - inherits height from a parent class constructor
+            - parent class must have blank constructor and constructor with value to inherit
 
 
 .Net Core Code Execution / Common Language Infrastructure(CLI) : source > build > run
@@ -48,8 +65,15 @@ Version Control
     - SCM : Source Control Management
 
 C# / Console Application:
+    - project
+        - cannot communicate even in same solution unless reference
+            - one way project reference
+                - reference in xml of csproj file
+    - namespace
+        - can commuinicate within project
     - runtime looks for a static method Main
     - class: a blueprint for creating objects
+        - always has a parent class(" : object" by default)
     - method: sequence of statements that have inputs(args) and outputs(returns)
     - variable: slot to contain a value
         - data types
@@ -67,3 +91,124 @@ C# / Console Application:
             - strings : are unicode
                 - char : one character
                 - string : any num of chars
+    - collections: containers
+        - https://docs.microsoft.com/en-us/dotnet/standard/collections/
+        - array
+            - fixed size + data type
+        - ArrayList
+            - dynamic size
+            - not locked to 1 data type
+        - List<T>
+            - felxible size and data type
+        - HashSet
+            - high performance
+            - no duplicates, and elements in random order
+        - Dictionary
+            - <key>,<value>
+            - no duplicate keys but can be duplicate values
+            
+    - reference vs value type:
+        - reference type : heap + stack
+            - address where value is stored
+            - strings, arrays, delagates, etc.
+            - upcasting a value to object boxes it in a refernce type container
+        - value type : stack
+            - has its own memory space
+            - bool, char, decimal, int, etc.
+            - can be on heap if tied to refernce object
+            - downcasting from object to value type unboxes out of reference type
+    - Interface
+        - can contain methods and propteries
+            - no implementation and no constructors or fields
+        - all members have same access modifier as interface
+        - cant implement interface to static methods
+    - abstract class
+    - delagates : assign reference methods to delagate variables
+        - used to pass methods as parameters
+    - events : notify subscribers everytime something happens
+        - sends event(publisher), receives event(subscribers)
+    - nullable value types
+        - allows value to be null or filled
+        - ? after data type assignment (bool?, int?)
+    - serialization: get data outside of the CLR
+        - when interacting with things outside of .NET
+            - make class IDisposable
+                - make sure to use a using statement or call dispose/close for garbage collection
+            - make long running calls "async" if other work can be done in meantime
+        - formats:
+            - binary : space efficient but not human readable
+                - protobuf, custom
+            - text : human readable/writeable
+                -csv, tsv, json, xml
+    - Modifiers:
+        - Abstract
+            - create classes and members that are incomplete and must be implemented in dervived class
+        - Const
+            - value wont change
+            - must assign value when delcaring
+            - implicitly static
+        - Readonly
+            - more flexible const
+            - dont have to provide a value right away
+                - must be set by end of constructor
+        - virtual
+            - put on parent type to establish method override
+        - ovveride
+            - put on child type to establish method override
+        - selaed
+            - enforce no Inheritance from class
+                - can also use it on method or property
+                    - cant override that method
+        - static
+            - member will belong to type rather than object and can be called from class
+                - MyClass.myFunction();
+                    - dont have to make object to call
+            - tied to class and can only reference other static things
+        - partial
+            - can create a class in multiple files 
+                - partial keyword will auto put them together on compile
+                - useful with code generation that might replace a entire file
+    - variance
+        - out
+            - passes variable in method parametes and not vriables value
+                - var doesnt have to be initialized
+            - method must set some value to variable
+        - ref
+            - variable is being passed to method
+                - variable must be initialized
+        - in
+            - passes reference to variable instead of value
+                - variable cannot be changed in method
+
+
+
+----------------------------------------------------
+Topics:
+
+Anatomy of Code (Language, Compiler, Runtime, Platform)
+Environment Setup (IDE, Code Editor, Version Control, Chat)
+Basic Topics (Core C#, Program Structure, Testing, Logging)
+.NET Building Blocks (Framework, Standard, Core, Project, Solution, Assembly, Library, Application)
+Common Language Runtime (BCL, CIL, CLI, CLR, CTS, JIT, VES)
+Runtime Environment (Garbage Collection, Managed, Unmanaged)
+Datatypes (Reference, Value)
+Access Modifiers (Internal, Private, Protected, Public)
+Extended Modifiers (Abstract, Const, New, Override, Partial, Readonly, Sealed, Static, Virtual)
+Class (Constructor, Field, Method, Property, Reference Type)
+Struct (Constructor, Field, Method, Property, Value Type)
+Interface (Method, Property)
+Enum (Collection)
+Semantic Code (DRY, Comments-Inline, Comments-XML, KISS, Separation Of Concerns)
+Object Oriented Programming (Abstraction, Encapsulation, Inheritance, Polymorphism)
+Variance (As, Boxing, Casting, Is, Out, Ref, TypeOf)
+Collections (Array, List, Data Structures, Dictionary, Generics)
+Serialization (File I/O, Regular Expressions, Serializer-JSON, Serializer-Text, Serializer-XML)
+Exception Handling (Catch, Custom Exceptions, Finally, Throw, Try)
+Test Driven Development (Code-Coverage, Unit-Testing)
+Application Debugging (Breakpoints, Debugger, Logging)
+SOLID (Single-Responsibility, Open-Closed, Liskov-Substitution, Interface-Segregation, Dependency-Inversion)
+Design Patterns (Creational-Singleton, Creational-Factory)
+Delegates (Action, Event, Function, Lambda, LINQ, Predicate)
+Multithreading (Async-Await, Task, Thread)
+Git (Add, Commit, Log, Pull, Push, Status)
+
