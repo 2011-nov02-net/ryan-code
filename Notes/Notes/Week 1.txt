@@ -74,7 +74,7 @@ Testing:
         - System Testing : test the whole thing together
         - User-Acceptance Testing : evaluate from user pov
         - Function Testing : does app fulfill some function
-    - Test Driven Development : 
+    - Test Driven Development(TDD) : 
         - Scaffold classes with skeleton code (just enough to compile)
         - write thorough unit tests for some of the code
         - write just enough code to make test pass
@@ -166,7 +166,12 @@ C# / Console Application:
             - no implementation and no constructors or fields
         - all members have same access modifier as interface
         - cant implement interface to static methods
+        - must be fully implemented
+        - only public access modifiers
     - abstract class
+        - create class and methods that need to be implemented in a derived class
+        - doesnt have to be fully implemented
+        - can contain diff access modifiers
     - delagates : assign reference methods to delagate variables
         - used to pass methods as parameters
     - events : notify subscribers everytime something happens
@@ -197,7 +202,7 @@ C# / Console Application:
                 - must be set by end of constructor
         - virtual
             - put on parent type to establish method override
-        - ovveride
+        - overide
             - put on child type to establish method override
         - selaed
             - enforce no Inheritance from class
