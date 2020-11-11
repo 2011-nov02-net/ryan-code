@@ -1,3 +1,14 @@
+Azure:
+    - Manage Azure
+        - Azure portal
+        - Azure CLI
+        - VS & VS Code
+    - Everything needs to be parts of "resource group"
+        - We create : Resource Group > SQL Server > SQL Database
+            - Every resource groups is part of a subscription
+            - Database name scoped within resource group
+            - Server name must be unique
+
 Data:
     - .Net
         - Classes / Objects / Collections
@@ -58,3 +69,67 @@ SQL : Structured Query Language
             - t-sql is language
             - connects to .NET with Object-relational mapper(ORM)
                 - ORM is called Entity Framework
+        - Data Manipulation Language (DML)
+            - SELECT, INSERT, UPDATE, DELETE, TRUNCATE
+            - these commands all operate on rows of tables.
+        - Data Definition Language
+            - CREATE, ALTER, DROP
+            - these commands operate on other objects, like entire tables, or functions, views, etc.
+        - Data Control Language (DCL) manages permissions/users/auth
+            - GRANT, REVOKE
+    - Semi colons (;) not requires
+    - Line breaks and spacing doesnt matter
+    - Not case sensitive
+    - Single Quotes '' = VARCHAR or string literal
+    - Double Quotes " " = Group data : could also use [full name]
+    - = NULL is always false (even NULL = NULL)
+        - Use IS NULL or IS NOT NULL to check
+    - Comments:
+        - -- (2 dashes) single line commeny
+        - /**/ block comment
+    - Operators:
+        - OPS : < <= = >= >
+        - Not equals : != or <>
+        - Boolean : AND OR NOT
+    - Joins: allow a query to access serveral tables at once
+        - Join condition is mostly foreign key to primary key
+        - INNER JOIN:
+            - Only include rows from each table that match search
+        - LEFT JOIN:
+            - Include all of left table and only those from right that match
+        - RIGHT JOIN:
+            - Include those from left that match and all of right
+        - FULL JOIN:
+            - Inlcude everything from both
+        - Cross JOIN:
+            - Every item from left to every item to right
+    - Set Operators: Like joins but uses the results of a select instead of 2 tables data
+        - Both queries Must have same num of cols and data types
+        - UNION:
+            - gives all rows that are found in either query without duplicates
+        - UNION ALL:
+            - gives all rows even duplicates
+        - INTERSECT:
+            - all rows in both queries no duplicates
+        - EXCEPT:
+            - all rows in first but not second
+    - Sub Queries:
+        - Run query based on condition of another query
+        - Operators:
+            - IN, NOT IN, EXISTS, ANY, ALL
+        - Common Table Expression (CTE):
+            - run a query in advance and put result in temp var to be used in main query
+        
+    ---------REFER TO SQL TEST FILES---------
+    SELECT statement:
+        - Get data from table
+        - Returns a results set not a table
+    INSERT statement:
+        - insert values into table
+    UPDATE statement:
+        - modify value in table
+        - SET  to change values
+    DELETE:
+        - delete a single row
+    TRUNCATE:
+        - deletes all rows in table
