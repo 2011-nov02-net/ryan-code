@@ -1,0 +1,60 @@
+Data:
+    - .Net
+        - Classes / Objects / Collections
+        - Fields/Variables to store referenced to other data
+    - Text formats like xml/json
+        - heirarchical containers with attributes
+    - Relational Database
+        - Like a spreadsheet
+            - no heirarchical structure
+        - Represent identity with primary keys
+        - Represent relationships with foreign keys
+        - Tables / rows / columns
+            - Unnormalized
+                - Update anomaly : you modify all copies but miss one and data becomes inconsistant
+                - Deletion anomaly : you delete one piece of data and it deletes additional data because of db structure
+                - Insertian anomaly : your unable to store certain pieces of data without also having others
+                - Slow searching / performance issues because unstructured data
+            - Normalized : taking from unstructured to structured and follow rules
+                - 6 Normal Forms : 1-3 are the practical ones
+                    - 1NF
+                        - all elements are atomic values, not lists/groups/sets. break them up to more rows
+                        - each row must be unique
+                        - adding new columns to split groups is not motivated and informally violates 1NF
+                    - 2NF
+                        - all cols which are not part of any candidate key, cannot have partial Dependency on any of the candidate keys
+                        - all have to be fully dependent on every can candidate key
+                        - if no composite keys, 1NF implies 2NF
+                    - 3NF
+                        - no non-CanKey column can depend on any other non-CanKey column
+                        - No Transitive Dependency
+                            - an indirect Dependency A -> B, B -> C so dep from A -> C
+
+Referential Integrity: no broken references
+    - every foreign key value should actually point to somthing in another table
+
+Functional Dependency: a relationship between two pieces of data or attributes : (X -> Y) y is dependent on xs
+    - for any value of X theres only one possible value of Y
+    - Could be sets of columns not just individual columns
+
+    - Candidate Key : a minimal set of col/attr that every other column is dependent on
+        - minimal size : (not (name, phone) only (name) or (phone))
+        - often set is just size 1 
+        - the values of anu Candidate key can uniquely identify that row
+            - if key has multiple columns, also can be called a composite key
+    - Primary Key : one of the canidate keys to be official identifier
+        - underline column to show its primary key
+    - Foreign Key : a copy of the primary key to reference the row in another table
+
+SQL : Structured Query Language
+    - allows very abstract operations in a relation db
+    - Variants:
+        - MySQL
+        - PostgreSQL - open source
+        - Oracle SQL - used by java
+        - SQLite - lightweight
+        - *SQL Server (Transact-SQL) - Microsoft .NET
+            - sql server is software/runtime
+            - t-sql is language
+            - connects to .NET with Object-relational mapper(ORM)
+                - ORM is called Entity Framework
