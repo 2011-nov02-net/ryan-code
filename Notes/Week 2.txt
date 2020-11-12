@@ -91,6 +91,66 @@ SQL : Structured Query Language
         - OPS : < <= = >= >
         - Not equals : != or <>
         - Boolean : AND OR NOT
+    - collation
+        - database-wide settings for things like:
+        - what encoding to use for non-Unicode strings
+        - what currency symbol
+        - what decimal point (,/.)
+        - what default date format
+        - whether (& how) strings compare (with case sensitivity, or not)
+  
+    ---------REFER TO SQL TEST FILES FOR MORE INFO---------
+    Data Types:
+        - numeric types
+            - whole number
+                - TINYINT (1-byte)
+                - SMALLINT (2-byte)
+                - INT (4-byte) - use unless having good reason
+                - BIGINT (8-byte)
+            - floating-point numbers
+                - FLOAT, REAL
+                - DECIMAL(n,p) aka NUMERIC(n,p)
+                    - "n" is the number of digits
+                    - "p" is the number of digits after the decimal point
+                    - e.g. NUMERIC(10,2) would store numbers like 12345678.99
+            - currency
+                - MONEY, SMALLMONEY
+                -  high precision, display with a $ (or something else depending on collation)
+        - boolean
+            - BIT (0 or 1)
+        - string/text types
+            - CHAR(n)     fixed-length non-Unicode string
+            - VARCHAR(n)  variable length up to n, non-Unicode string
+            - NCHAR(n)    fixed-length, Unicode string
+            - NVARCHAR(n) variable-length Unicode string - use unless with good reason
+            - we've got a variety of functions for strings e.g. LEN, SUBSTRING,
+                - CHARINDEX, REPLACE, LOWER, UPPER
+            - (indexing in SQL is 1-based, not 0-based)
+        - date/time
+            - DATE for dates
+            - TIME for times
+            - DATETIME(p) - stores both date and time
+            -    can't store a very wide range of dates
+            - DATETIME2(p) - store date and time with wide range, variable precision
+            - DATETIMEOFFSET - for storing intervals of time
+            - can extract parts of the dates/times using functions like YEAR(),
+            - DATEPART(YEAR FROM '2019-01-01') or DATEPART(YEAR, '2019-01-01')
+        - binary
+            - binary
+            - varbinary
+    Queries:
+        - SELECT statement:
+            - Get data from table
+            - Returns a results set not a table
+        - INSERT statement:
+            - insert values into table
+        - UPDATE statement:
+            - modify value in table
+            - SET  to change values
+        - DELETE:
+            - delete a single row
+        - TRUNCATE:
+            - deletes all rows in table
     - Joins: allow a query to access serveral tables at once
         - Join condition is mostly foreign key to primary key
         - INNER JOIN:
@@ -119,38 +179,47 @@ SQL : Structured Query Language
             - IN, NOT IN, EXISTS, ANY, ALL
         - Common Table Expression (CTE):
             - run a query in advance and put result in temp var to be used in main query
-        
-    ---------REFER TO SQL TEST FILES---------
-    SELECT statement:
-        - Get data from table
-        - Returns a results set not a table
-    INSERT statement:
-        - insert values into table
-    UPDATE statement:
-        - modify value in table
-        - SET  to change values
-    DELETE:
-        - delete a single row
-    TRUNCATE:
-        - deletes all rows in table
-
-
-
-
+    - Constraints
+        -- any column by default could contain NULL
+        --      writing NULL makes default explicit
+        -- NOT NULL - restrict column from being NULL
+        -- UNIQUE - prevent any duplicates
+        --		good for candidate keys, can be applied to sets of columns
+        --		good for representing 1-to-1 replationship with foreign key
+        -- PRIMARY KEY - set the primary for the table
+        --		auto applies UNIQUE and NOT NULL
+        --      but usually right NOT NULL anyway to be explicit
+        -- CHECK - put any expression in () after this and that expression needs to be true for every row
+        -- DEFAULT - sets a defualt value if an INSERT is done without one
+        --		doesnt have to be constant - is evaluated at insert time
+        -- IDENTITY(start, offset) - sets auto incrementing default number
+        -- FOREIGN KEY
+    - Indexes
+        - data structures that we can have sql server maintain during writes so that reads can be faster
+        - you want indexes on columns or sets of columns that usually reference in JOIN or WHERE conditions (foreign key good candidate)
+        - SQL Server Types:
+            - Clustered index:
+                - tells sql server what order to 'physically' arrange the table in
+                - fastest index, but there can only be 1
+                - by default PRIMARY KEY sets CLUSTERED INDEX
+            - Nonclustered index
+                - maintains a seperate data structure kinda like an index at the end of an encylopedia
+                - we can have many of these
+                - UNIQUE sets nonclustered index by default
 
 
 ----------------------------------------------------
 LINQ (IEnumerable, IQueryable)
 Logging
-RDBMS (Table, Row, Column, PK, FK, Referential Integrity, Multiplicity)
-Normalization (Anomalies, Dependency, Candidate Key, 1NF, 2NF, 3NF)
-DML (Select, Insert, Update, Delete, Truncate)
+-RDBMS (Table, Row, Column, PK, FK, Referential Integrity, Multiplicity)
+-Normalization (Anomalies, Dependency, Candidate Key, 1NF, 2NF, 3NF)
+-DML (Select, Insert, Update, Delete, Truncate)
 DDL (Create, Alter, Drop)
-Constraints (PK, FK, Unique, Check, Null, Not-Null, Default)
-JOIN (Inner-Join, Left-Join, Right-Join, Full-Join, Cross-Join, Self-Join)
-UNION (Union, Union-All, Intersect, Except)
-Subquery (CTE, Using-From, Using-Where)
-Aggregate (Average, Count, Sum, Min, Max)
+-Constraints (PK, FK, Unique, Check, Null, Not-Null, Default)
+-JOIN (Inner-Join, Left-Join, Right-Join, Full-Join, Cross-Join, Self-Join)
+-UNION (Union, Union-All, Intersect, Except)
+-Subquery (CTE, Using-From, Using-Where)
+-Aggregate (Average, Count, Sum, Min, Max)
 View (Schema-Binding)
 Function (Parameter, Scalar, Tabular)
 Stored Procedure (Variable, If-Else, Try-Catch, Throw, RaiseError, Print)
