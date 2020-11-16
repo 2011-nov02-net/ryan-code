@@ -14,7 +14,7 @@ CREATE TABLE Assign.Customers (
 	ID INT NOT NULL PRIMARY KEY IDENTITY,
 	FirstName NVARCHAR(150) NOT NULL,
 	LastName NVARCHAR(150) NOT NULL,
-	CardNumber NVARCHAR(150) NOT NULL
+	CardNumber NVARCHAR(16) NOT NULL
 );
 
 --Create products table
@@ -31,9 +31,9 @@ INSERT INTO Assign.Products (Name, Price) VALUES
 	('Ultra Coffee', 19.99);
 
 INSERT INTO Assign.Customers (FirstName, LastName, CardNumber) VALUES
-	('Bob', 'Bobson', '1234 1234 1234 1243'),
-	('Andy', 'Anderson', '4212 2352 6456 4564'),
-	('John', 'Johnson', '1234 3455 6767 3344');
+	('Bob', 'Bobson', '1234123412341243'),
+	('Andy', 'Anderson', '4212235264564564'),
+	('John', 'Johnson', '1234345567673344');
 
 INSERT INTO Assign.Orders (ProductID, CustomerID) VALUES
 	(1, 1),
@@ -46,7 +46,7 @@ INSERT INTO Assign.Products (Name, Price) VALUES
 
 -- Add tina smith
 INSERT INTO Assign.Customers(FirstName, LastName, CardNumber) VALUES
-	('Tina', 'Smith', '2342 3245 2334 1243');
+	('Tina', 'Smith', '2342324523341243');
 
 --Create tina smith order for an iphone
 INSERT INTO Assign.Orders (ProductID, CustomerID) VALUES
