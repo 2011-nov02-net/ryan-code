@@ -41,7 +41,7 @@ namespace EFDemo.ConsoleApp.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 //REMOVE BEFORE PUSHING TO GIT
-                optionsBuilder.UseSqlServer("Server=tcp:towner-training.database.windows.net,1433;Initial Catalog=Chinook;Persist Security Info=False;User ID=rtowner;Password=MazdaSpeed3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("");
             }
         }
 
