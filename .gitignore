@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 Notes/ClassesPractice/.vscode/launch.json
 Notes/ClassesPractice/.vscode/tasks.json
+test-projects/EFDemo/EFDemo.ConsoleApp/chinnok-connect.json

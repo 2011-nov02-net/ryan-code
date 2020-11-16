@@ -1,3 +1,27 @@
+LINQ:
+    - extension methods for IEnumerable
+    - 2 versions of every link extension method
+        - IEnumerable
+            - runs in CLR with .NET objects
+            - linq to objects
+        - IQueryable
+            - can be converted to some different way to get data like an sql query
+            - linq to sql or linq to xml
+    - 3 Types of LINQ methods:
+        - Return a new IEnumerable Collection - uses deferred execution - will wait to get data, dont modify original collection
+        - Return any concrete value - doesnt use deferred data
+            - Average, First
+        - Return collections that need to be "all there" - doesnt use defrred execution - gets all data right now
+            - ToArray, ToList
+    - Query syntax
+        - like an sql query
+            - from score in scores
+              where score > 80
+              select score;
+    - Method syntax
+        - uses a method and lambda
+            - scores.Where(x => x > 80);
+
 Azure:
     - Manage Azure
         - Azure portal
@@ -56,6 +80,26 @@ Functional Dependency: a relationship between two pieces of data or attributes :
     - Primary Key : one of the canidate keys to be official identifier
         - underline column to show its primary key
     - Foreign Key : a copy of the primary key to reference the row in another table
+
+Entity Framework:
+    - ORM: Object Relational Mapper
+        - software that translates between sql and object oriented data/operations
+    - Scaffold
+        - Create classes from sql tables
+    - EF Classes 
+        - DbContext : represents the database
+            - has many properties (at least 1 per table) which are DbSets
+        - DbSet : represents a table
+    - Datebase-First
+        - create sql db first then use EF to generate code
+        - modify databse first then regerate instead of changing classes
+    - Code-First
+        - write model by hand and use EF to generate migrations
+        - modify classes then migrate to databse
+
+Logging:
+    - 6 Levels of loggings
+        - Trace = 0, Debug = 1, Information = 2, Warning = 3, Error = 4, Critical = 5, None = 6
 
 SQL : Structured Query Language
     - allows very abstract operations in a relation db
@@ -206,29 +250,84 @@ SQL : Structured Query Language
                 - maintains a seperate data structure kinda like an index at the end of an encylopedia
                 - we can have many of these
                 - UNIQUE sets nonclustered index by default
+    - Computed columns:
+        - value is computed when read not Stored
+        - PERSISTED:
+            - value is stored but no recomputed until it needs to be
+            - FirstLetter AS SUBSTRING(Name, 1,1) PERSISTED
+    - Computed Tables: views
+        - can treat view as table
+        - CREATE VIEW item AS SELECT statement;
+    - Variables: scalar or tabled variables
+        - only exist for duration of batch
+        - split queries into serval parts
+        - store inmediate values
+        - ex.  DECLARE @name INT;
+               SELECT @name = SELECT name FROM Custermer WHERE id = 1; can also use SET
+        - ex.  DECLARE @mytable AS TABLE(
+            stuff
+        )
+    - User defined functions: read only to db
+        - cannot modify db
+        - pretty much just SELECT
+        - scalar
+            - returns single value
+        - tabled value
+            - returns table with info
+    - Stored Procedure:
+        - like functions except can modify db
+        - cant run them without EXECUTE
+        - dont have return values, but have out parameters
+        - need a variable to have procedure output return to
+    - Trigger
+        - some code that will run INSTEAD OF or AFTER you INSERT, UPDATE, or DELETE
+        - function that runs after event on table
+    - Transactions:
+        - creates a single unit of work
+            - all statements in block must succeed for all to succeed
+        - BEGIN TRANSACTION stuff COMMIT TRANSACTION
+            - can ROLLBACK TRANSACTION if error so none of statements go through
+            - can make SAVEPOINTS in long transactions so dont have to redo everything can go back to try a certain part
+        - in t-sql every statement is a transactions unto itself with auto rollback
+        - ACID : (Atomicity, Consistency, Isolation, Durability)
+            - Atomicity : succeed entirely or doesnt make any changes at all
+            - Consistency : not violate any db constraints
+            - Isolation : multiple transactions should be isolated and shouldnt affect the others
+            - Durability : transactions not complete until its been persisted to non volatile memory
+    Isolation:
+        - anomalies: issues without isloation
+            - dirty read : when this transaction see uncommitted data from another transaction
+            - non repeatable read : read same row twice but values different cause another transaction modified it
+            - phantom read : run same query twice and see new rows second time cause another transaction
+        - Isolation levels: higher iso level slower performance and higher chance of deadlock
+            - read_uncommitted : allows dity read
+            - read_committed : doesnt allow dirty reading but allows others - default
+            - repeatable : prevent non readble read and dirty read
+            - serializable : prevents all
+
 
 
 ----------------------------------------------------
-LINQ (IEnumerable, IQueryable)
-Logging
+-LINQ (IEnumerable, IQueryable)
+-Logging
 -RDBMS (Table, Row, Column, PK, FK, Referential Integrity, Multiplicity)
 -Normalization (Anomalies, Dependency, Candidate Key, 1NF, 2NF, 3NF)
 -DML (Select, Insert, Update, Delete, Truncate)
-DDL (Create, Alter, Drop)
+-DDL (Create, Alter, Drop)
 -Constraints (PK, FK, Unique, Check, Null, Not-Null, Default)
 -JOIN (Inner-Join, Left-Join, Right-Join, Full-Join, Cross-Join, Self-Join)
 -UNION (Union, Union-All, Intersect, Except)
 -Subquery (CTE, Using-From, Using-Where)
 -Aggregate (Average, Count, Sum, Min, Max)
-View (Schema-Binding)
-Function (Parameter, Scalar, Tabular)
-Stored Procedure (Variable, If-Else, Try-Catch, Throw, RaiseError, Print)
-Trigger (For, After, Instead-Of, Insert, Update, Delete)
-ACID (Atomicity, Consistency, Isolation, Durability)
-Transaction (Commit, Rollback, Savepoint)
-Isolation (Read-Uncommitted, Read-Committed, Repeatable-Read, Serializable)
-ORM (Entity Framework)
-EF model (Code-First Approach, Database-First Approach, DbContext, DbSet)
-EF querying (Eager Loading, Lazy Loading, Explicit Loading, LINQ, Deferred Execution)
-EF saving (Tracking, SaveChanges)
-Design Techniques (Repository-Pattern)
+-View (Schema-Binding)
+-Function (Parameter, Scalar, Tabular)
+-Stored Procedure (Variable, If-Else, Try-Catch, Throw, RaiseError, Print)
+-Trigger (For, After, Instead-Of, Insert, Update, Delete)
+-ACID (Atomicity, Consistency, Isolation, Durability)
+-Transaction (Commit, Rollback, Savepoint)
+-Isolation (Read-Uncommitted, Read-Committed, Repeatable-Read, Serializable)
+-ORM (Entity Framework)
+-EF model (Code-First Approach, Database-First Approach, DbContext, DbSet)
+-EF querying (Eager Loading, Lazy Loading, Explicit Loading, LINQ, Deferred Execution)
+-EF saving (Tracking, SaveChanges)
+-Design Techniques (Repository-Pattern)
