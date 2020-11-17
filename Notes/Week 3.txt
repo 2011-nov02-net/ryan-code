@@ -1,0 +1,189 @@
+PC/Browser > DNS > Webserver
+    - HTTP: Hypertext Transfer Protocol
+        - service to communicate from browser to webserver
+        - Get Method:
+            - after the submission of the form, the form values will be visible in the address bar of the browser.
+            - typing url, clicking links/bookmarks, submitting forms
+        - Post Method:
+            - after the submission of the form, the form values will NOT be visible in the address bar of the browser.
+            - submitting forms
+            - syntax called query string in url
+    - DNS: Domain Name Servivce
+        - to know the ip for the url at the current time
+        - pc will cache info so doesnt need to ask everytime
+    - Browser HTTP Request some url
+    - Webserver HTTP Response to pc
+        - First response is html document
+
+HTML: Hypertext Markup Language
+    - For defining structure and content of document
+    - Contains elements and attributes
+        - elements : tags
+        - attributes : values in the tags that give metadata for browser
+    - HTML4 First Standard - Standardized by W3C : World Wide Web Consortium
+        - XHTML - From W3C - Didnt take effect
+    - HTML5 - Current Standard - "Living standard"
+        - Make tags more semantic and reflect the meaning of the context 
+        - Document Type Declaration (DTD)
+            - <!DOCTYPE html> and <meta charset="UTF-8"> : html5 uses utf-8 as default encoding
+        - HTML5 Tags / added features:
+            - Allows embed of audio and video fields
+            - Provides support for javascript to run in background
+            <header> - defines heading of a page
+            <footer> - defines footer of a page
+            <article> - defines an article
+            <aside> - content aside from the main content
+            <nav> - navigation section
+            <main> - the main content of the page
+            <section> - logically split content into sections
+            <details> - additional details the user can view or hide
+            <summary> - visible heading for "details" element
+            <mark> - marked / highlighted text
+        - HTML5 Validation:
+            - Client-side validation : Validate data before sent to server
+                - Built-in form validation : uses html5 for validation features
+                    - **required**: Used when the user must fill the field before submitting the form.
+                    - **minlength and maxlength**: Used to specify the minimum and maximum length of the text.
+                    - **min and max**: Used to specify the min and max values for the numerical fields.
+                    - **type**: Defines the data should be a number or an email address or other predefined type. 
+                    - **pattern**: Defines a pattern (regular expression) the entered data needs to follow. 
+                - Javascript validaion : coded using js and is customizable
+            - Server-side validation : validation done by the server
+    - Global attributes:
+        * class
+        * id
+        * hidden
+        * lang
+        * style
+        * tabindex
+        * title
+    - <head>
+        - contains metadata associated with the page
+    - <body>
+        - contains the actual pages content
+    - Types of elements:
+        - inline level elements
+            - create short structures : <b> <i> <small> <strong>
+        - block level elements  
+            - create large structures : <p> <h1> <div> <form> <table>
+    - Common elements
+        * `<div>` - defines a "division of the page"
+        * `<p>` - defines a paragraph
+        * `<span>` - an inline tag for grouping text or elements
+        * `<b>` - bold text
+        * `<i>` - italicized text
+        * `<h1>`, `<h2>`, ... `<h6>` - these are headings, h1 is largest and h6 is smallest
+        * `<br>` - line break
+        * `<table>` - defines a table
+        * `<img src="URL">`
+        * `<ol>` - an ordered list
+        * `<ul>` - an unordered list
+        * `<a href="">` - makes a hyperlink
+    - HTML form
+        - section that contains controls that collect informtion for the user to use
+        - Use forms to collect info from user
+        - Form types:
+            - text: text field
+            - password: passowrd text field
+            - radio: radio buttons
+            - checkbox: chekc boxes
+            - file: open file dialog
+            - submit: submits form data to webserver
+            - reset: resets form data
+            - textarea: multi line text box - doesnt use <input>
+            - select box: drop down box - doesnt use <input>
+        - Form/input attributes 
+            * action : where the form data will be processed
+            * target : specify if the submitted result will open in current window(self), new window(blank), or new frame
+            * name : provides name for each element and label for data once sent, not required
+            * method : specify the http method used to send data
+            * value : specifies intial value for field
+            * placeholder : a hint to describe the field
+            * required : if field is required to submit the form
+            * min/max : specify min/mmax values for fields
+    - ARIA: Accessible Rich Internet Applications
+        - Make web content and applications more accesible for disabilities
+            - Attributes:
+            
+
+
+CSS: Cascading Style Sheet
+    - CSS3 - Current Standard
+        - Supports responsive web design, transitions, transformations, and animations
+    - The apperance and layout of page
+    - Consists of a set of rules that defines the styles
+        - Selectors: an html element to apply the style to
+        - Declarations: property and value to change
+    - CSS Box Model
+        - Determins how webpage is rendered by browser.
+        - Considers each element a Box
+            - Web page is made up of rectangular boxes arranged and related to each other
+        - Each box has 4 parts
+            - Margin : space between border and margin, usefull to seperate element from its neighbors
+            - Border : area between padding and margin
+            - Padding : space around the content within its border box
+            - Content : the content
+    - Types of CSS:
+        - Inline : on the element using the style tag, will override other types
+        - Internal/Embedded : CSS is on in the head of html page, when one document must be styled uniquely
+        - External : The CSS is in another file and linked to the html file
+    - CSS Positions:
+        - Static: elements box is arranged automatically consistent with normal flow
+        - Relative: box position is relative to its normal flow position
+        - Absolute: box is arranged to an absolute position with reference to its containing block
+        - Fixed: box position is offset from its browser window and wont move when scrolling
+        - Inherit: value for this property is taken from its parent element
+    - CSS Selectors:
+        * Element Selector: selects html elements and applies to all of them <p> <div>
+        * Id Selector: selects all elements with this id, uses #name1, #name2
+        * Class Selector: same as id but like this .name1 .name2
+        * Universal Selector: matches all elements on page unless another selector mathes them, uses *
+        * Attribute selectors: selects html elements that have an attribute, uses [attribute] [attribute="value"]
+        * Grouping Selector: same as element but applies to multiple: h1, h2 {}
+        * Child and descendent selectors: selects childs of an element: div > p {}(child) div p {}(descendent)
+        * General and adjacent sibling selectors: div ~ p {}(general sibling) div + p {}(adjacent sibling)
+        * Pseudo-element and pseudo-class selectors: specifies state of element div:hover {}
+    - CSS Sepcificity: rank browser will use if multiple on element
+        1. Inline CSS - Example: `<h1 style="color: #ffffff;">` (highest priority)
+        2. ID Selector 
+        3. Class Attribute and Pseudo-Classes Selectors.
+        4. Element and Pseudo-Elements Selector. (lowest priority)
+    - Responsive Web Design
+        - an approach that allows webpages to render on all devices and screen sizes automatically
+        - works through CSS using various settings, flex-grids, flex-boxes, flexable images, and media queries
+        -Media Queries:
+            - customize the presentation of the webpage for a range of devices without changing Markup
+            - logical expression thats true or false
+                - media type and expression that check for the conditions of particular media features
+            - Types:
+                - all: used for all devices
+                - print: used for printers
+                - screen: used for screens like computer screens, tablets, smart phones
+                - speech: used for screen readers that read pages outloud
+        - Flex boxes:
+            - a one-dimensional layout method for arranging elements in rows or columns : doesnt have to use float or positioning
+            - define flex container by setting display to flex or inline-flex, display: flex
+                - Flex container properties:
+                    - flex-direction: change the direction of the flex items
+                    - flex-wrap: defines the flex items that should wrap
+                    - flex-flow: sets both direction and wrap
+                    - justify-content: align flex items in container
+                    - align-items: align items vertically
+        - CSS animations:
+            - creating animation on the site
+            - main component is @keyframes
+                - inside @keyframes you define animation stages and their properties
+        - CSS Transitions:
+            - let you define changes for html elements : time intervals, speed of accel curve, etc
+    - Bootstrap:
+        - open source framework and mobile-first apporach for developing responsive websites
+        - Bootstrap 4 is newest version
+        - Bootstrap grid system consists of a series of containers, rows, and columsn to layout and align content 
+            - creates a responsive layout built with grid and flexboxes
+            - classifies screen sizes based on pixels
+            - The transition between various screen sizes is know as breakpoints
+                - Breakpoints:
+                    * `.col-sm` - used for small devices where the screen width is equal to or greater than 576px
+                    * `.col-md` - used for medium devices where the screen width equal to or greater than 768px
+                    * `.col-lg`- used for large devices where the screen width equal to or greater than 992px
+                    * `.col-xl` - used for extra-large devices where the screen width equal to or greater than 1200px

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML Coding Assign</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+            fieldset {
+                width: 20%;
+            }
+            .footer {
+                position: absolute;
+                bottom: 0;
+                height: 2em;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Logo and About-->
+        <img src="google_classroom.svg" width="350" alt="Google classroom logo">
+        <h1>About</h1>
+        <p>This is Google Classroom. Below you can find out locations, out classes, and a signup form to make an account!</p>
+        <!-- Locations list-->
+        <h2>Our Locations</h2>
+        <ul>
+            <li>USA</li>
+                <ul>
+                    <li><a href="#">New York</a></li>
+                    <li><a href="#">Columbus</a></li>
+                    <li><a href="#">Austin</a></li>
+                    <li><a href="#">Philly</a></li>
+                </ul>
+            <li>World</li>
+                <ul>
+                    <li><a href="#">Ottawa</a></li>
+                    <li><a href="#">Sydney</a></li>
+                </ul>
+        </ul>
+        <!-- Classes table-->
+        <h2>Upcoming Classes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td><b>Location</b></td>
+                    <td><b>Topic</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>New York</td>
+                    <td>JavaScript &amp; jQuery</td>
+                </tr>
+                <tr>
+                    <td>San Francisco</td>
+                    <td>HTML &amp; CSS</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Signup Form -->
+        <h2>Sign Up!</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name"><br />
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email"><br />
+            <label for="location">Location</label>
+            <select name="location">
+                <option value="sanfran">San Francisco</option>
+                <option value="philly" selected>Philly</option>
+                <option value="sydney">Sydney</option>
+            </select>
+            <fieldset>
+                <legend>Gender:</legend>
+                <label for"female">Female:</label>
+                <input type="radio" name"female" id="female">
+                <label for"male">Male:</label>
+                <input type="radio" name"male" id="male">
+            </fieldset>
+            <label for"experience">Experience:</label><br />
+            <textarea name="experience" id="experience"></textarea><br />
+            <button type="button" name="signup" id"signupButton">Sign Up</button>
+        </form>
+        <!-- Social Media links footer -->
+        <div class="footer">
+            <a href="#">Twitter</a>
+            <span> | </span>
+            <a href="#">Facebook</a>
+            <span> | </span>
+            <a href="#">Flickr</a>
+        </div>
+    </body>
+</html>
