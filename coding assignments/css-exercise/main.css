@@ -7,7 +7,7 @@
 .fox-img {
     width: 350px;
     height: 125px;
-    border: solid 7px orange;;
+    border: solid 7px orange;
 }
 
 .fox-text {
@@ -15,7 +15,7 @@
     padding: 5px;
     width: 340px;
     height: 250px;
-    border: dashed 7px orange;;
+    border: dashed 7px orange;
     background-color: yellow;
     overflow-y: scroll;
 }

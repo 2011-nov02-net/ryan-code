@@ -187,3 +187,24 @@ CSS: Cascading Style Sheet
                     * `.col-md` - used for medium devices where the screen width equal to or greater than 768px
                     * `.col-lg`- used for large devices where the screen width equal to or greater than 992px
                     * `.col-xl` - used for extra-large devices where the screen width equal to or greater than 1200px
+
+ASP.NET
+    - webserver receives http requests and returns http responses
+    - ASP.NET CORE
+        - Framework for any kind of app that will hadnle http requests
+    - MVC : Model View Controller Pattern
+        - Half of ASP.Net Core
+        - Seperates application into 3 groups of components
+            - Models
+                - doesnt depend on anything
+                - the business logic
+            - Views > Model
+                - depends on model
+                - should have minmal logic
+                - main function is to display html with c# to user
+            - Controllers > View & Model
+                - depends on model
+                - controller is inital entry point
+                - User requests sent to controller which is repsponsable for working with the model to perfrom applications
+                - Controller chooses the view to display to the user and provides it with any model data
+    - Request > Middleware > Response
