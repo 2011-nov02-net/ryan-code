@@ -1,0 +1,25 @@
+.fox-container {
+    background-color: palegoldenrod;
+    border: solid 5px darkred;
+    padding: 10px;
+    width: 450px;
+}
+.fox-img {
+    width: 350px;
+    height: 125px;
+    border: solid 7px orange;;
+}
+
+.fox-text {
+    margin-top: 25px;
+    width: 350px;
+    height: 250px;
+    border: dashed 7px orange;;
+    background-color: yellow;
+    overflow-y: scroll;
+}
+
+.bold-underline {
+    font-weight: bold;
+    text-decoration: underline;
+}
