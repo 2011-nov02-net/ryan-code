@@ -12,6 +12,7 @@
 
 .fox-text {
     margin-top: 25px;
+    padding: 5px;
     width: 350px;
     height: 250px;
     border: dashed 7px orange;;
