@@ -17,6 +17,9 @@ namespace HelloAspNetCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //for configuring middleware before plugging in and adding services to the DI container
+            //services.AddControllers(); //just controllers
+            services.AddControllersWithViews(); //controllers and views
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +53,7 @@ namespace HelloAspNetCore
 
                     try
                     {
-                        html = File.ReadAllText("./Pages" + filepath + ".html");
+                        html = File.ReadAllText("./wwwroot" + filepath + ".html");
                     }
                     catch (FileNotFoundException e)
                     {
@@ -66,7 +69,7 @@ namespace HelloAspNetCore
                     
                     try
                     {
-                        html = File.ReadAllText("./Pages" + filepath + ".html");
+                        html = File.ReadAllText("./wwwroot" + filepath + ".html");
                     }
                     catch(FileNotFoundException e)
                     {
@@ -75,6 +78,32 @@ namespace HelloAspNetCore
 
                     await context.Response.WriteAsync(html);
                 });
+
+                //asp net core mvc
+                //every route definition needs a controller and an action on that controller
+                endpoints.MapControllerRoute(
+                   name: "hello-controller",
+                   pattern: "hello",
+                   defaults: new { controller = "Hello", action = "Action1" });
+
+                //with parmams
+                endpoints.MapControllerRoute(
+                   name: "hello-controller2",
+                   pattern: "hello/{param1}/{param2:int?}",
+                   defaults: new { controller = "Hello", action = "ParameterAction1"});
+
+                //better way
+                //paramerter named action will determine action so dont need different routes like above
+                endpoints.MapControllerRoute(
+                   name: "hello-controller-gerneic",
+                   pattern: "hi/{action=Action1}/{param1}/{param2:int?}",
+                   defaults: new { controller = "Hello"});
+                
+                //for views
+                endpoints.MapControllerRoute(
+                   name: "view-controller-gerneic",
+                   pattern: "viewbased/{action=Home}",
+                   defaults: new { controller = "ViewBased" });
             });
         }
     }

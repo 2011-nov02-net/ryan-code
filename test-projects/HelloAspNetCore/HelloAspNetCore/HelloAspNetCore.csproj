@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <None Include="wwwroot\htmlpage.html" />
+    <None Include="wwwroot\index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
 </Project>

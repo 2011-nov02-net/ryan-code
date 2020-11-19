@@ -194,6 +194,8 @@ ASP.NET
         - Framework for any kind of app that will hadnle http requests
     - MVC : Model View Controller Pattern
         - Half of ASP.Net Core
+        - when we use specific subset of middleware/classes/practices within asp net core as a whole
+        - anonymous type : create an object without a class, new {}
         - Seperates application into 3 groups of components
             - Models
                 - doesnt depend on anything
@@ -207,4 +209,39 @@ ASP.NET
                 - controller is inital entry point
                 - User requests sent to controller which is repsponsable for working with the model to perfrom applications
                 - Controller chooses the view to display to the user and provides it with any model data
-    - Request > Middleware > Response
+                - Controller classes contain action methods
+                    - each action method will process 1 kind of request that it matches, and we group related action methods into a controller
+                    -Action Method:
+                        - the process of filling action methods with parameters is called model binding
+                            - model binding errors do not throw exceptioons
+                            - "?" in parameter will make it optional
+    - MVC Pipeline:
+        - Request > Middleware > Response
+            - Browser Request > Internet > Webserver > ASP.NET > Webserver > Internet > Browser Response
+            - Routing Picks Controller/Action Method > Instanciate Controller and Call Action Method > Action Method Executes > Result Sent Back In Response
+    - Dependency Injection:
+        - If a class needs to use something else, it should come in through the constructor instead of creating a new instance wihtin the class
+
+
+
+HTML:
+Fundamentals (Elements, Attributes, Doctype, HTML 5)
+Multimedia (Audio, Canvas, Video)
+Forms (Input, Validation)
+
+CSS:
+Fundamentals (rule, property, cascade, inheritance, box model, media query, positioning, Responsive Design, display, common properties, external/internal/inline)
+Selectors (Omni, Tag, Class, Id, Parent-Child, Ancestor-Descendant, Sibling, Pseudo-Classes, Pseudo-Elements)
+
+ASP.NET MVC:
+MVC Concepts (Model, View, Controller)
+Request lifecycle (DNS, HTTP, request, response)
+ASP.NET Core (Web server, Host, Middleware)
+Controller (Actions, HTTP Verbs)
+Model (DataAnnotations, viewmodel)
+View (Razor, strongly-typed, weakly-typed, Layout, ViewData, ViewBag)
+Routing (Global, route parameters)
+Validation (Server, client, CSRF, anti-forgery token)
+Helpers (HTML, Tag, Custom)
+Model binding (Route parameters, query string, form data)
+Dependency injection (Singleton, Scoped, Transient, FromServices)
