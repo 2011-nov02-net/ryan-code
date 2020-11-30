@@ -190,6 +190,8 @@ CSS: Cascading Style Sheet
 
 ASP.NET
     - webserver receives http requests and returns http responses
+    - Eager Loading: a query will load related data along with query data
+    - Lazy Loading: data wont be created ahead of time, only when someone tries to access it
     - ASP.NET CORE
         - Framework for any kind of app that will hadnle http requests
     - MVC : Model View Controller Pattern
@@ -204,6 +206,16 @@ ASP.NET
                 - depends on model
                 - should have minmal logic
                 - main function is to display html with c# to user
+                - Strongly typed view:
+                    - has model defined at top
+                - Weakly Typed View:
+                    - treats model as dynamic type
+                        - object without defined class, switches off compile time type checking
+                - View Data:
+                    - Data passed between controller and view, wont survive redirect
+                - Temp Data:
+                    - each value in temp data is remembered (in cookies) until the next request then its marked for removal
+                        - can unmark it using keep or use peek to keep it from being marked
             - Controllers > View & Model
                 - depends on model
                 - controller is inital entry point
@@ -221,27 +233,30 @@ ASP.NET
             - Routing Picks Controller/Action Method > Instanciate Controller and Call Action Method > Action Method Executes > Result Sent Back In Response
     - Dependency Injection:
         - If a class needs to use something else, it should come in through the constructor instead of creating a new instance wihtin the class
+    - Filter Pipeline:
+        - Authorization > Resource > Action > Exception > Result
+        
 
 
 
 HTML:
-Fundamentals (Elements, Attributes, Doctype, HTML 5)
-Multimedia (Audio, Canvas, Video)
-Forms (Input, Validation)
+-Fundamentals (Elements, Attributes, Doctype, HTML 5)
+-Multimedia (Audio, Canvas, Video)
+-Forms (Input, Validation)
 
 CSS:
-Fundamentals (rule, property, cascade, inheritance, box model, media query, positioning, Responsive Design, display, common properties, external/internal/inline)
-Selectors (Omni, Tag, Class, Id, Parent-Child, Ancestor-Descendant, Sibling, Pseudo-Classes, Pseudo-Elements)
+-Fundamentals (rule, property, cascade, inheritance, box model, media query, positioning, Responsive Design, display, common properties, external/internal/inline)
+-Selectors (Omni, Tag, Class, Id, Parent-Child, Ancestor-Descendant, Sibling, Pseudo-Classes, Pseudo-Elements)
 
 ASP.NET MVC:
-MVC Concepts (Model, View, Controller)
-Request lifecycle (DNS, HTTP, request, response)
-ASP.NET Core (Web server, Host, Middleware)
-Controller (Actions, HTTP Verbs)
-Model (DataAnnotations, viewmodel)
-View (Razor, strongly-typed, weakly-typed, Layout, ViewData, ViewBag)
-Routing (Global, route parameters)
-Validation (Server, client, CSRF, anti-forgery token)
-Helpers (HTML, Tag, Custom)
-Model binding (Route parameters, query string, form data)
-Dependency injection (Singleton, Scoped, Transient, FromServices)
+-MVC Concepts (Model, View, Controller)
+-Request lifecycle (DNS, HTTP, request, response)
+-ASP.NET Core (Web server, Host, Middleware)
+-Controller (Actions, HTTP Verbs)
+-Model (DataAnnotations, viewmodel)
+-View (Razor, strongly-typed, weakly-typed, Layout, ViewData, ViewBag)
+-Routing (Global, route parameters)
+-Validation (Server, client, CSRF, anti-forgery token)
+-Helpers (HTML, Tag, Custom)
+-Model binding (Route parameters, query string, form data)
+-Dependency injection (Singleton, Scoped, Transient, FromServices)
